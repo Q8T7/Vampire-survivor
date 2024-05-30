@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://craumqfqofrho"]
+
+[ext_resource type="Script" path="res://start_menu.gd" id="1_34jqy"]
+
+[node name="StartMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_34jqy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1952.0
+offset_bottom = 1104.0
+color = Color(0.431373, 0.741176, 1, 1)
+
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

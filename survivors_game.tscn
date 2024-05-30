@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b83ylcp6wgwvx"]
+[gd_scene load_steps=6 format=3 uid="uid://b83ylcp6wgwvx"]
 
 [ext_resource type="PackedScene" uid="uid://djf7qvech8sho" path="res://player.tscn" id="1_l1ux2"]
 [ext_resource type="Script" path="res://survivors_game.gd" id="1_swra0"]
 [ext_resource type="PackedScene" uid="uid://sjqb4mb4hwj8" path="res://pine_tree.tscn" id="2_r827u"]
+[ext_resource type="AudioStream" uid="uid://dd4vcr3djoprm" path="res://238251__steaq__dark-ambient-backgrounding-001.wav" id="4_n5h7j"]
 
 [sub_resource type="Curve2D" id="Curve2D_4opx0"]
 _data = {
@@ -89,5 +90,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 156
 text = "Game Over"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n5h7j")
+autoplay = true
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
